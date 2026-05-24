@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LASO — Laura Architects Solutions & Operations</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Cormorant Garamond for Editorial Serif & Inter for Sans-serif -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        luxuryDark: '#121212',
+                        luxuryLight: '#FAF9F6',
+                        luxuryMuted: '#8E8E93',
+                        luxuryGold: '#C5A880',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Smooth Scroll & Selection Styling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        ::selection {
+            background-color: #C5A880;
+            color: #121212;
+        }
+
+        /* Custom scrollbar for fashion-site minimalism */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #121212;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #C5A880;
+        }
+
+        /* Elegant Fade-in Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body class="bg-luxuryDark text-luxuryLight font-sans overflow-x-hidden">
+
+    <!-- TOP NAVIGATION BAR (LVMH / Zara Minimalist Style) -->
+    <header
+        class="fixed top-0 left-0 w-full z-50 bg-transparent backdrop-blur-md border-b border-luxuryLight/10 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center space-x-3 tracking-[0.25em]">
+                <span class="font-serif text-2xl font-semibold tracking-[0.3em] text-luxuryLight">LASO.</span>
+            </a>
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center space-x-10 text-xs tracking-widest font-medium uppercase">
+                <a href="#philosophy" class="hover:text-luxuryGold transition-colors">Philosophy</a>
+                <a href="#verticals" class="hover:text-luxuryGold transition-colors">Verticals</a>
+                <a href="#metrics" class="hover:text-luxuryGold transition-colors">Metrics</a>
+                <a href="#agencies" class="hover:text-luxuryGold transition-colors">Partnerships</a>
+                <a href="#contact"
+                    class="hover:text-luxuryGold transition-colors text-luxuryGold border border-luxuryGold/30 px-4 py-2 hover:bg-luxuryGold hover:text-luxuryDark transition-all duration-300">Consultation</a>
+            </nav>
+            <!-- Mobile Menu Trigger -->
+            <button id="mobileMenuBtn" class="md:hidden text-luxuryLight focus:outline-none">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Nav Overlay -->
+    <div id="mobileMenu"
+        class="fixed inset-0 bg-luxuryDark z-40 flex flex-col justify-center items-center space-y-8 text-lg tracking-widest uppercase font-serif hidden transition-all duration-500">
+        <a href="#philosophy" onclick="toggleMobileMenu()" class="hover:text-luxuryGold">Philosophy</a>
+        <a href="#verticals" onclick="toggleMobileMenu()" class="hover:text-luxuryGold">Verticals</a>
+        <a href="#metrics" onclick="toggleMobileMenu()" class="hover:text-luxuryGold">Metrics</a>
+        <a href="#agencies" onclick="toggleMobileMenu()" class="hover:text-luxuryGold">Partnerships</a>
+        <a href="#contact" onclick="toggleMobileMenu()" class="text-luxuryGold">B2B Inquiry</a>
+    </div>
+
+    <!-- HERO SECTION (Editorial Cover Page) -->
+    <section class="min-h-screen flex items-center justify-center relative pt-20 px-6 overflow-hidden">
+        <!-- Minimal abstract background line-art resembling architectural blueprints -->
+        <div class="absolute inset-0 opacity-10 pointer-events-none">
+            <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <line x1="10%" y1="0" x2="10%" y2="100%" stroke="#FAF9F6" stroke-width="0.5" />
+                <line x1="30%" y1="0" x2="30%" y2="100%" stroke="#FAF9F6" stroke-width="0.5" />
+                <line x1="70%" y1="0" x2="70%" y2="100%" stroke="#FAF9F6" stroke-width="0.5" />
+                <line x1="90%" y1="0" x2="90%" y2="100%" stroke="#FAF9F6" stroke-width="0.5" />
+                <circle cx="70%" cy="40%" r="300" stroke="#C5A880" stroke-width="0.5" fill="none" />
+                <circle cx="70%" cy="40%" r="450" stroke="#C5A880" stroke-width="0.5" fill="none" />
+            </svg>
+        </div>
+
+        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10 py-12">
+            <!-- Left Hero Content -->
+            <div class="lg:col-span-7 flex flex-col justify-center reveal">
+                <span class="text-xs uppercase tracking-[0.4em] text-luxuryGold mb-4 font-semibold block">Now Operating
+                    Globally — NY • LA • Worldwide</span>
+                <h1
+                    class="font-serif text-5xl md:text-7xl xl:text-8xl font-light tracking-tight leading-[0.9] text-luxuryLight mb-6">
+                    The Architecture <br>
+                    <span class="italic font-normal font-serif text-luxuryGold">of Immersive Luxury</span>
+                </h1>
+                <p class="text-sm md:text-base text-luxuryMuted max-w-lg mb-8 leading-relaxed font-light">
+                    Transforming high-concept creative vision into flawless operational reality. Backed by 17+ years of
+                    global launch precision, including 16 years leading worldwide readiness at Apple.
+                </p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6">
+                    <a href="#verticals"
+                        class="bg-luxuryLight text-luxuryDark px-8 py-4 text-xs uppercase tracking-widest font-medium hover:bg-luxuryGold hover:text-luxuryDark transition-all duration-300 text-center">
+                        Explore Verticals
+                    </a>
+                    <a href="#contact"
+                        class="border border-luxuryLight/30 text-luxuryLight px-8 py-4 text-xs uppercase tracking-widest font-medium hover:border-luxuryGold hover:text-luxuryGold transition-all duration-300 text-center">
+                        Partner with LASO
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Hero Image/Graphic Placeholder with Editorial frame -->
+            <div class="lg:col-span-5 flex justify-center lg:justify-end">
+                <div
+                    class="relative w-full max-w-sm aspect-[3/4] border border-luxuryLight/20 p-4 bg-luxuryDark/40 backdrop-blur-sm group hover:border-luxuryGold/40 transition-all duration-500">
+                    <div class="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-luxuryGold"></div>
+                    <div class="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-luxuryGold"></div>
+                    <div
+                        class="w-full h-full bg-neutral-900/60 flex flex-col justify-between p-8 relative overflow-hidden">
+                        <!-- Subtle graphic texture overlay -->
+                        <div class="absolute inset-0 bg-gradient-to-br from-luxuryGold/5 to-transparent"></div>
+
+                        <div class="flex justify-between items-start z-10">
+                            <span class="font-serif text-4xl font-extralight text-luxuryGold/40">LASO.</span>
+                            <span class="text-[9px] uppercase tracking-widest text-luxuryMuted">Project File:
+                                2026</span>
+                        </div>
+
+                        <div class="z-10 mt-auto">
+                            <span class="text-xs uppercase tracking-[0.2em] text-luxuryGold block mb-1">Global Launch
+                                Architect</span>
+                            <h3 class="font-serif text-2xl font-light tracking-wide text-luxuryLight">Laura Ortuondo
+                            </h3>
+                            <p class="text-[10px] text-luxuryMuted mt-2 font-mono leading-relaxed">
+                                // 16-Year Apple Launch Alum<br>
+                                // 45+ Mega NPI Runway Shows<br>
+                                // 32 Countries Supported
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Section Indicator -->
+        <div
+            class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-2 pointer-events-none">
+            <span class="text-[9px] uppercase tracking-[0.3em] text-luxuryMuted">SCROLL TO DISCOVER</span>
+            <div class="w-[1px] h-8 bg-luxuryGold/50 animate-bounce"></div>
+        </div>
+    </section>
+
+    <!-- PHILOSOPHY SECTION -->
+    <section id="philosophy" class="py-24 border-y border-luxuryLight/10 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                <!-- Portrait Block -->
+                <div class="lg:col-span-5 relative group reveal">
+                    <div
+                        class="absolute inset-0 border border-luxuryGold translate-x-4 translate-y-4 -z-10 group-hover:translate-x-2 group-hover:translate-y-2 transition-all duration-500">
+                    </div>
+                    <!-- Mock Portrait with Elegant Gradient replaced with Laura's Photo -->
+                    <div
+                        class="w-full aspect-[4/5] bg-neutral-900 flex items-center justify-center relative overflow-hidden border border-luxuryLight/10">
+                        <img src="laura_cover.jpg" alt="Laura O. - Founder"
+                            class="absolute inset-0 w-full h-full object-cover z-0">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-luxuryDark via-luxuryDark/40 to-transparent opacity-90 z-10 group-hover:opacity-70 transition-opacity duration-500">
+                        </div>
+                        <div class="absolute z-20 text-center p-6 bottom-0 w-full">
+                            <span
+                                class="font-serif text-3xl font-light tracking-widest text-luxuryGold block mb-2">LAURA
+                                O.</span>
+                            <span class="text-[10px] uppercase tracking-[0.3em] text-luxuryMuted">Founder, Solutions
+                                Architect</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Philosophy Text Block -->
+                <div class="lg:col-span-7 flex flex-col justify-center reveal">
+                    <span class="text-xs uppercase tracking-[0.4em] text-luxuryGold mb-4 font-semibold">The Founder's
+                        Principle</span>
+                    <h2
+                        class="font-serif text-3xl md:text-5xl font-light tracking-wide leading-tight mb-8 text-luxuryLight">
+                        Where Creative Vision <br>Meets Ironclad Precision
+                    </h2>
+                    <p class="text-sm md:text-base text-luxuryMuted leading-relaxed mb-8 font-light space-y-4">
+                        "For over 17 years, the world’s most meticulous consumer brand relied on one operational
+                        blueprint to transition cutting-edge vision into flawless global reality.<br><br>
+                        LASO was founded to bring that exact framework of ironclad precision, discreet execution, and
+                        cross-functional mastery to the worlds of high fashion, luxury experiential, and global brand
+                        spectacles. We don't just coordinate events. We design the seamless, multi-organizational
+                        ecosystems that protect creative vision, mitigate multi-million dollar risks, and elevate brands
+                        on the world stage."
+                    </p>
+                    <blockquote
+                        class="border-l-2 border-luxuryGold pl-6 italic font-serif text-lg md:text-xl text-luxuryLight">
+                        "The details are not the details. They make the experience."
+                        <span
+                            class="block text-xs uppercase tracking-widest text-luxuryGold mt-2 font-sans not-italic font-semibold">—
+                            LAURA ORTUONDO, FOUNDER</span>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE THREE VERTICALS (THE CORE INTERACTIVE FEATURE) -->
+    <section id="verticals" class="py-24 bg-luxuryDark relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-20">
+                <span class="text-xs uppercase tracking-[0.4em] text-luxuryGold mb-4 font-semibold block">Lines of
+                    Effort</span>
+                <h2 class="font-serif text-4xl md:text-5xl font-light tracking-wide text-luxuryLight">Our Three
+                    Verticals</h2>
+                <p class="text-xs text-luxuryMuted tracking-widest uppercase mt-4">Structured for High-Fashion, Luxury
+                    Experiential, & Global Launch Events</p>
+            </div>
+
+            <!-- Vertical Layout: High Fashion editorial interactive layout -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+                <!-- Vertical 1 -->
+                <div
+                    class="border border-luxuryLight/10 p-10 hover:border-luxuryGold/50 transition-all duration-500 bg-neutral-900/30 group flex flex-col justify-between min-h-[500px] relative overflow-hidden">
+                    <div
+                        class="absolute top-0 right-0 w-24 h-24 bg-luxuryGold/5 rounded-full blur-2xl group-hover:bg-luxuryGold/10 transition-all">
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-start mb-12">
+                            <span class="font-serif text-5xl font-extralight text-luxuryGold/30">01</span>
+                            <span class="text-luxuryGold bg-luxuryGold/10 p-3 rounded-full text-xs">
+                                <i class="fa-solid fa-globe"></i>
+                            </span>
+                        </div>
+                        <h3
+                            class="font-serif text-2xl font-light tracking-wide mb-6 group-hover:text-luxuryGold transition-colors">
+                            Fractional Executive Production & Global Launch Operations
+                        </h3>
+                        <p class="text-sm text-luxuryMuted font-light leading-relaxed mb-8">
+                            LASO steps in as your plug-and-play B2B enterprise delivery partner to lead high-stakes
+                            global reveals, seasonal collections, and immersive brand experiences.
+                        </p>
+                    </div>
+                    <ul class="space-y-3 border-t border-luxuryLight/10 pt-6 text-xs text-luxuryMuted font-light">
+                        <li class="flex items-center space-x-2">
+                            <i class="fa-solid fa-chevron-right text-[10px] text-luxuryGold"></i>
+                            <span>Turnkey oversight of complex high-fashion summits</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i class="fa-solid fa-chevron-right text-[10px] text-luxuryGold"></i>
+                            <span>"The Drop" rollout framework and retail synchronicity</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i class="fa-solid fa-chevron-right text-[10px] text-luxuryGold"></i>
+                            <span>Bicoastal NY/LA & worldwide project deployment</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Vertical 2 -->
+                <div
+                    class="border border-luxuryLight/10 p-10 hover:border-luxuryGold/50 transition-all duration-500 bg-neutral-900/30 group flex flex-col justify-between min-h-[500px] relative overflow-hidden">
+                    <div
+                        class="absolute top-0 right-0 w-24 h-24 bg-luxuryGold/5 rounded-full blur-2xl group-hover:bg-luxuryGold/10 transition-all">
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-start mb-12">
+                            <span class="font-serif text-5xl font-extralight text-luxuryGold/30">02</span>
+                            <span class="text-luxuryGold bg-luxuryGold/10 p-3 rounded-full text-xs">
+                                <i class="fa-solid fa-diagram-project"></i>
+                            </span>
+                        </div>
+                        <h3
+                            class="font-serif text-2xl font-light tracking-wide mb-6 group-hover:text-luxuryGold transition-colors">
+                            Cross-Functional Framework Architecture & Stakeholder Alignment
+                        </h3>
+                        <p class="text-sm text-luxuryMuted font-light leading-relaxed mb-8">
+                            The bridge between brilliant creative vision and rigorous corporate execution. We align
+                            naturally protective, creative minds with strict logistical realities.
+                        </p>
+                    </div>
+                    <ul class="space-y-3 border-t border-luxuryLight/10 pt-6 text-xs text-luxuryMuted font-light">
+                        <li class="flex items-center space-x-2">
+                            <i class="fa-solid fa-chevron-right text-[10px] text-luxuryGold"></i>
+                            <span>Matrix Synchronization (PR, Legal, Creative, Security)</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i class="fa-solid fa-chevron-right text-[10px] text-luxuryGold"></i>
+                            <span>Deeply integrated NDA & confidentiality compliance</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i class="fa-solid fa-chevron-right text-[10px] text-luxuryGold"></i>
+                            <span>Direct oversight of technical crews and vendor networks</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Vertical 3 -->
+                <div
+                    class="border border-luxuryLight/10 p-10 hover:border-luxuryGold/50 transition-all duration-500 bg-neutral-900/30 group flex flex-col justify-between min-h-[500px] relative overflow-hidden">
+                    <div
+                        class="absolute top-0 right-0 w-24 h-24 bg-luxuryGold/5 rounded-full blur-2xl group-hover:bg-luxuryGold/10 transition-all">
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-start mb-12">
+                            <span class="font-serif text-5xl font-extralight text-luxuryGold/30">03</span>
+                            <span class="text-luxuryGold bg-luxuryGold/10 p-3 rounded-full text-xs">
+                                <i class="fa-solid fa-sliders"></i>
+                            </span>
+                        </div>
+                        <h3
+                            class="font-serif text-2xl font-light tracking-wide mb-6 group-hover:text-luxuryGold transition-colors">
+                            Business Process Re-Engineering (BPR) & Retail/Event Operations
+                        </h3>
+                        <p class="text-sm text-luxuryMuted font-light leading-relaxed mb-8">
+                            Standardizing the back-of-house machine. We analyze, optimize, and rebuild how luxury brands
+                            and experiential agencies execute large-scale projects to protect margins.
+                        </p>
+                    </div>
+                    <ul class="space-y-3 border-t border-luxuryLight/10 pt-6 text-xs text-luxuryMuted font-light">
+                        <li class="flex items-center space-x-2">
+                            <i class="fa-solid fa-chevron-right text-[10px] text-luxuryGold"></i>
+                            <span>Bespoke pipeline and workflow optimization audits</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i class="fa-solid fa-chevron-right text-[10px] text-luxuryGold"></i>
+                            <span>Systems Integration (SAP & bespoke tracking pipelines)</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i class="fa-solid fa-chevron-right text-[10px] text-luxuryGold"></i>
+                            <span>Predictive mitigation for volatile live-show variables</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- INTERACTIVE CASE HIGHLIGHT: THE DROPS AND KEYEVENTS -->
+    <section class="py-24 bg-neutral-950 border-t border-luxuryLight/10 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <span class="text-xs uppercase tracking-[0.4em] text-luxuryGold mb-4 font-semibold block">Case
+                        Methodology</span>
+                    <h2
+                        class="font-serif text-3xl md:text-5xl font-light tracking-wide leading-tight mb-8 text-luxuryLight">
+                        Standardizing the "Drop" Blueprint
+                    </h2>
+                    <p class="text-sm text-luxuryMuted leading-relaxed mb-6 font-light">
+                        In both the high-fashion runway environment and premium consumer hardware launches, success
+                        relies on the **"Drop"**—a highly synchronized, high-velocity reveal of inventory, media, and
+                        experience to a global audience.
+                    </p>
+
+                    <!-- Accordion Info Blocks -->
+                    <div class="space-y-4">
+                        <div class="border-b border-luxuryLight/10 pb-4">
+                            <button onclick="toggleAccordion(1)"
+                                class="w-full flex justify-between items-center text-left py-2 font-serif text-lg hover:text-luxuryGold transition-colors focus:outline-none">
+                                <span>I. Seamless Asset Deployment Control</span>
+                                <i id="acc-icon-1" class="fa-solid fa-plus text-xs text-luxuryGold"></i>
+                            </button>
+                            <div id="acc-content-1" class="hidden text-xs text-luxuryMuted leading-relaxed pt-2">
+                                Leveraging methods that managed over 10k secure physical devices per Apple launch event.
+                                We implement secure custody chains, zero-leak protocols, and rigorous inventory tracking
+                                frameworks that protect couture garments, jewelry, and proprietary assets.
+                            </div>
+                        </div>
+
+                        <div class="border-b border-luxuryLight/10 pb-4">
+                            <button onclick="toggleAccordion(2)"
+                                class="w-full flex justify-between items-center text-left py-2 font-serif text-lg hover:text-luxuryGold transition-colors focus:outline-none">
+                                <span>II. High-Complexity Stakeholder Alignment</span>
+                                <i id="acc-icon-2" class="fa-solid fa-plus text-xs text-luxuryGold"></i>
+                            </button>
+                            <div id="acc-content-2" class="hidden text-xs text-luxuryMuted leading-relaxed pt-2">
+                                Uniting diverse cross-functional teams that rarely speak the same corporate language:
+                                aligning visual creatives and directors with legal compliance, strict NDA enforcement,
+                                municipal security coordinators, and live broadcast engineering.
+                            </div>
+                        </div>
+
+                        <div class="border-b border-luxuryLight/10 pb-4">
+                            <button onclick="toggleAccordion(3)"
+                                class="w-full flex justify-between items-center text-left py-2 font-serif text-lg hover:text-luxuryGold transition-colors focus:outline-none">
+                                <span>III. Post-Show Operational Audits</span>
+                                <i id="acc-icon-3" class="fa-solid fa-plus text-xs text-luxuryGold"></i>
+                            </button>
+                            <div id="acc-content-3" class="hidden text-xs text-luxuryMuted leading-relaxed pt-2">
+                                Ensuring that every show feeds back into a loop of continuous improvement. We run
+                                comprehensive post-activation telemetry checks on expenditures, third-party vendor
+                                performance, and resource utilization models to protect corporate margins on future
+                                shows.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Abstract Staging Canvas / Visual representation of a runway build layout -->
+                <div
+                    class="bg-neutral-900 border border-luxuryLight/10 p-8 aspect-square flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute inset-0 opacity-10">
+                        <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#FAF9F6" stroke-width="0.5" />
+                            </pattern>
+                            <rect width="100%" height="100%" fill="url(#grid)" />
+                        </svg>
+                    </div>
+                    <div class="flex justify-between items-start z-10">
+                        <span class="text-[10px] font-mono tracking-widest text-luxuryGold">STAGE & RUNWAY SPATIAL
+                            BLUEPRINT</span>
+                        <span class="text-[9px] font-mono text-luxuryMuted">v2.4_LAUNCH_PREPARATION</span>
+                    </div>
+
+                    <!-- Dynamic vector runway illustration -->
+                    <div
+                        class="w-full h-1/2 border border-luxuryGold/30 relative flex items-center justify-center bg-luxuryDark/60 z-10">
+                        <div
+                            class="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-8 bg-gradient-to-b from-luxuryGold/20 to-transparent border-x border-luxuryGold/30">
+                        </div>
+                        <span class="text-[10px] uppercase tracking-[0.3em] text-luxuryGold font-mono z-20">The Runway
+                            Track</span>
+                    </div>
+
+                    <div class="z-10 mt-6 border-t border-luxuryLight/10 pt-4 flex justify-between items-end">
+                        <div class="space-y-1">
+                            <span class="text-[9px] uppercase tracking-widest text-luxuryMuted block">Active
+                                Framework:</span>
+                            <span class="text-xs font-serif tracking-wide text-luxuryLight">LASO Launch Matrix™</span>
+                        </div>
+                        <span class="text-[10px] font-mono text-luxuryGold">[ SYSTEM SECURE ]</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- METRICS SECTION (Sleek Data Dashboard) -->
+    <section id="metrics" class="py-24 bg-neutral-950 border-y border-luxuryLight/10 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-xs uppercase tracking-[0.4em] text-luxuryGold mb-4 font-semibold block">Elite
+                    Operational Heritage</span>
+                <h2 class="font-serif text-4xl font-light tracking-wide text-luxuryLight">Impact at Absolute Scale</h2>
+            </div>
+
+            <div class="grid grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16 text-center">
+                <!-- Stat 1 -->
+                <div class="flex flex-col items-center">
+                    <span
+                        class="font-serif text-5xl md:text-7xl font-extralight text-luxuryGold tracking-tight mb-2">17+</span>
+                    <span class="text-[10px] md:text-xs uppercase tracking-widest text-luxuryMuted">Years Experiential
+                        Innovation</span>
+                </div>
+                <!-- Stat 2 -->
+                <div class="flex flex-col items-center">
+                    <span
+                        class="font-serif text-5xl md:text-7xl font-extralight text-luxuryGold tracking-tight mb-2">40+</span>
+                    <span class="text-[10px] md:text-xs uppercase tracking-widest text-luxuryMuted">Global Launch Shows
+                        Led</span>
+                </div>
+                <!-- Stat 3 -->
+                <div class="flex flex-col items-center">
+                    <span
+                        class="font-serif text-5xl md:text-7xl font-extralight text-luxuryGold tracking-tight mb-2">32+</span>
+                    <span class="text-[10px] md:text-xs uppercase tracking-widest text-luxuryMuted">Countries Supported
+                        Globally</span>
+                </div>
+                <!-- Stat 4 -->
+                <div class="flex flex-col items-center">
+                    <span
+                        class="font-serif text-5xl md:text-7xl font-extralight text-luxuryGold tracking-tight mb-2">10K+</span>
+                    <span class="text-[10px] md:text-xs uppercase tracking-widest text-luxuryMuted">Devices Deployed Per
+                        Launch</span>
+                </div>
+                <!-- Stat 5 -->
+                <div class="flex flex-col items-center">
+                    <span
+                        class="font-serif text-5xl md:text-7xl font-extralight text-luxuryGold tracking-tight mb-2">120%</span>
+                    <span class="text-[10px] md:text-xs uppercase tracking-widest text-luxuryMuted">Media Coverage
+                        Expansion</span>
+                </div>
+                <!-- Stat 6 -->
+                <div class="flex flex-col items-center">
+                    <span
+                        class="font-serif text-5xl md:text-7xl font-extralight text-luxuryGold tracking-tight mb-2">4x</span>
+                    <span class="text-[10px] md:text-xs uppercase tracking-widest text-luxuryMuted">Apple Leadership
+                        Awards</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- B2B AGENCY PARTNERSHIP MATRIX -->
+    <section id="agencies" class="py-24 bg-luxuryDark">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-xs uppercase tracking-[0.4em] text-luxuryGold mb-4 font-semibold block">Strategic
+                    Subcontracting</span>
+                <h2 class="font-serif text-4xl font-light tracking-wide text-luxuryLight">Target B2B Alliances</h2>
+                <p class="text-xs text-luxuryMuted tracking-widest uppercase mt-4">Embedded Operational Frameworks for
+                    Premium Experiential Agencies</p>
+            </div>
+
+            <!-- Target Agencies Showcase Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+                <!-- Bureau Betak -->
+                <div
+                    class="border border-luxuryLight/10 p-8 hover:border-luxuryGold/30 transition-all duration-300 bg-neutral-900/10 hover:bg-neutral-900/30 flex flex-col justify-between min-h-[300px]">
+                    <div>
+                        <span class="text-[10px] tracking-[0.2em] uppercase text-luxuryMuted">Target Partnership</span>
+                        <h4 class="font-serif text-2xl font-light tracking-wide text-luxuryLight mt-2 mb-4">Bureau Betak
+                        </h4>
+                        <p class="text-xs text-luxuryMuted leading-relaxed">
+                            Perfect integration of LASO's Business Process Re-Engineering (BPR) to streamline
+                            high-velocity global runway supply chains across NY, LA, Paris, and Shanghai.
+                        </p>
+                    </div>
+                    <div class="border-t border-luxuryLight/5 pt-4 mt-6 flex justify-between items-center">
+                        <span class="text-[9px] uppercase tracking-wider text-luxuryGold">B2B Service Blueprint</span>
+                        <i class="fa-solid fa-arrow-right-long text-luxuryGold text-xs"></i>
+                    </div>
+                </div>
+
+                <!-- Prodject -->
+                <div
+                    class="border border-luxuryLight/10 p-8 hover:border-luxuryGold/30 transition-all duration-300 bg-neutral-900/10 hover:bg-neutral-900/30 flex flex-col justify-between min-h-[300px]">
+                    <div>
+                        <span class="text-[10px] tracking-[0.2em] uppercase text-luxuryMuted">Target Partnership</span>
+                        <h4 class="font-serif text-2xl font-light tracking-wide text-luxuryLight mt-2 mb-4">Prodject
+                        </h4>
+                        <p class="text-xs text-luxuryMuted leading-relaxed">
+                            Mitigating operational bottlenecks on massive global drops and high-stakes galas (like the
+                            Met Gala) using Apple-standard program management frameworking.
+                        </p>
+                    </div>
+                    <div class="border-t border-luxuryLight/5 pt-4 mt-6 flex justify-between items-center">
+                        <span class="text-[9px] uppercase tracking-wider text-luxuryGold">Risk & Ops Architecture</span>
+                        <i class="fa-solid fa-arrow-right-long text-luxuryGold text-xs"></i>
+                    </div>
+                </div>
+
+                <!-- IMG Focus -->
+                <div
+                    class="border border-luxuryLight/10 p-8 hover:border-luxuryGold/30 transition-all duration-300 bg-neutral-900/10 hover:bg-neutral-900/30 flex flex-col justify-between min-h-[300px]">
+                    <div>
+                        <span class="text-[10px] tracking-[0.2em] uppercase text-luxuryMuted">Target Partnership</span>
+                        <h4 class="font-serif text-2xl font-light tracking-wide text-luxuryLight mt-2 mb-4">IMG Focus
+                        </h4>
+                        <p class="text-xs text-luxuryMuted leading-relaxed">
+                            Commanding the multi-brand, highly volatile operational matrices for New York Fashion Week
+                            (NYFW) and bicoastal activations.
+                        </p>
+                    </div>
+                    <div class="border-t border-luxuryLight/5 pt-4 mt-6 flex justify-between items-center">
+                        <span class="text-[9px] uppercase tracking-wider text-luxuryGold">Fractional Exec
+                            Production</span>
+                        <i class="fa-solid fa-arrow-right-long text-luxuryGold text-xs"></i>
+                    </div>
+                </div>
+
+                <!-- Counsel -->
+                <div
+                    class="border border-luxuryLight/10 p-8 hover:border-luxuryGold/30 transition-all duration-300 bg-neutral-900/10 hover:bg-neutral-900/30 flex flex-col justify-between min-h-[300px]">
+                    <div>
+                        <span class="text-[10px] tracking-[0.2em] uppercase text-luxuryMuted">Target Partnership</span>
+                        <h4 class="font-serif text-2xl font-light tracking-wide text-luxuryLight mt-2 mb-4">Counsel</h4>
+                        <p class="text-xs text-luxuryMuted leading-relaxed">
+                            Serving as the trusted, embedded logistical anchor for highly complex physical builds and
+                            experiential campaigns between NY and LA.
+                        </p>
+                    </div>
+                    <div class="border-t border-luxuryLight/5 pt-4 mt-6 flex justify-between items-center">
+                        <span class="text-[9px] uppercase tracking-wider text-luxuryGold">Cross-Functional Lead</span>
+                        <i class="fa-solid fa-arrow-right-long text-luxuryGold text-xs"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- B2B CONSULTATION & PARTNERSHIP PORTAL (The Contact Form) -->
+    <section id="contact" class="py-24 bg-luxuryDark relative">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-xs uppercase tracking-[0.4em] text-luxuryGold mb-4 font-semibold block">Inquire For
+                    Engagement</span>
+                <h2 class="font-serif text-4xl font-light tracking-wide text-luxuryLight">Secure LASO Services</h2>
+                <p class="text-xs text-luxuryMuted tracking-widest uppercase mt-4">Now booking project-based fractional
+                    retainers for late 2026/2027 campaigns.</p>
+            </div>
+
+            <div class="border border-luxuryLight/10 p-8 md:p-12 bg-neutral-900/10 backdrop-blur-md">
+                <form id="contactForm" class="space-y-8" onsubmit="handleInquirySubmit(event)">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="flex flex-col space-y-2">
+                            <label class="text-[10px] uppercase tracking-widest text-luxuryMuted" for="clientName">Name
+                                / Executive Sponsor</label>
+                            <input type="text" id="clientName" required
+                                class="bg-transparent border-b border-luxuryLight/20 py-3 focus:outline-none focus:border-luxuryGold transition-colors text-sm text-luxuryLight placeholder-luxuryMuted/40"
+                                placeholder="e.g. Lauren Houssin">
+                        </div>
+                        <div class="flex flex-col space-y-2">
+                            <label class="text-[10px] uppercase tracking-widest text-luxuryMuted"
+                                for="clientEmail">Corporate Email</label>
+                            <input type="email" id="clientEmail" required
+                                class="bg-transparent border-b border-luxuryLight/20 py-3 focus:outline-none focus:border-luxuryGold transition-colors text-sm text-luxuryLight placeholder-luxuryMuted/40"
+                                placeholder="e.g. l.houssin@bureaubetak.com">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="flex flex-col space-y-2">
+                            <label class="text-[10px] uppercase tracking-widest text-luxuryMuted"
+                                for="clientOrg">Enterprise / Agency Name</label>
+                            <input type="text" id="clientOrg" required
+                                class="bg-transparent border-b border-luxuryLight/20 py-3 focus:outline-none focus:border-luxuryGold transition-colors text-sm text-luxuryLight placeholder-luxuryMuted/40"
+                                placeholder="e.g. Bureau Betak / LVMH">
+                        </div>
+                        <div class="flex flex-col space-y-2">
+                            <label class="text-[10px] uppercase tracking-widest text-luxuryMuted"
+                                for="engagementType">Vertical of Interest</label>
+                            <select id="engagementType"
+                                class="bg-luxuryDark border-b border-luxuryLight/20 py-3 focus:outline-none focus:border-luxuryGold transition-colors text-sm text-luxuryLight">
+                                <option value="V1">Vertical 1: Fractional Executive Production</option>
+                                <option value="V2">Vertical 2: Stakeholder Alignment Architecture</option>
+                                <option value="V3">Vertical 3: Business Process Re-Engineering (BPR)</option>
+                                <option value="All">All Verticals / Bespoke Launch Retainer</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col space-y-2">
+                        <label class="text-[10px] uppercase tracking-widest text-luxuryMuted"
+                            for="projectOverview">Brief Project / Campaign Overview</label>
+                        <textarea id="projectOverview" rows="4" required
+                            class="bg-transparent border-b border-luxuryLight/20 py-3 focus:outline-none focus:border-luxuryGold transition-colors text-sm text-luxuryLight placeholder-luxuryMuted/40 resize-none"
+                            placeholder="Please outline the launch dates, regions (NY/LA/Worldwide), and creative scale..."></textarea>
+                    </div>
+
+                    <div class="flex items-center space-x-3 text-xs text-luxuryMuted">
+                        <input type="checkbox" id="ndaCheck" required
+                            class="accent-luxuryGold bg-transparent border border-luxuryLight/20 rounded">
+                        <label for="ndaCheck">I require a standard NDA / Confidentiality Framework prior to deep
+                            strategic review.</label>
+                    </div>
+
+                    <div class="pt-4 flex justify-center">
+                        <button type="submit"
+                            class="w-full bg-luxuryLight text-luxuryDark py-4 text-xs uppercase tracking-widest font-semibold hover:bg-luxuryGold hover:text-luxuryDark transition-all duration-300">
+                            Submit B2B Partnership Inquiry
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Custom Success message (Replaces alert) -->
+                <div id="successMessage" class="hidden text-center py-8 space-y-4">
+                    <i class="fa-solid fa-circle-check text-4xl text-luxuryGold"></i>
+                    <h4 class="font-serif text-2xl font-light text-luxuryLight">Inquiry Logged Securely</h4>
+                    <p class="text-xs text-luxuryMuted max-w-md mx-auto leading-relaxed">
+                        Thank you for reaching out to LASO. Laura Ortuondo or an designated solutions architect will
+                        review your enterprise details and establish a secure bridge within 2 business days.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER SECTION -->
+    <footer class="bg-neutral-950 text-luxuryLight py-16 border-t border-luxuryLight/10 text-xs">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-12">
+            <!-- Left Branding -->
+            <div class="md:col-span-4 space-y-6">
+                <span class="font-serif text-3xl font-light tracking-[0.2em] text-luxuryLight">LASO.</span>
+                <p class="text-luxuryMuted leading-relaxed max-w-sm">
+                    Bespoke Launch and Operational Frameworks engineered for the most prominent luxury and fashion
+                    houses on Earth.
+                </p>
+                <div class="flex space-x-4 text-sm">
+                    <a href="https://linkedin.com/in/laura-ortuondo" target="_blank"
+                        class="text-luxuryMuted hover:text-luxuryGold transition-colors"><i
+                            class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="mailto:lauraort22@gmail.com"
+                        class="text-luxuryMuted hover:text-luxuryGold transition-colors"><i
+                            class="fa-solid fa-envelope"></i></a>
+                    <a href="tel:4087591125" class="text-luxuryMuted hover:text-luxuryGold transition-colors"><i
+                            class="fa-solid fa-phone"></i></a>
+                </div>
+            </div>
+
+            <!-- Middle Columns (Quick Links) -->
+            <div class="md:col-span-4 grid grid-cols-2 gap-8">
+                <div class="space-y-4">
+                    <h5 class="uppercase tracking-widest text-luxuryGold font-semibold">HQ Locations</h5>
+                    <ul class="space-y-2 text-luxuryMuted">
+                        <li>New York City</li>
+                        <li>Los Angeles</li>
+                        <li>San Diego</li>
+                    </ul>
+                </div>
+                <div class="space-y-4">
+                    <h5 class="uppercase tracking-widest text-luxuryGold font-semibold">Contact Info</h5>
+                    <ul class="space-y-2 text-luxuryMuted">
+                        <li>lauraort22@gmail.com</li>
+                        <li>408.759.1125</li>
+                        <li>lauraarchitectsolutions.com</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="md:col-span-4 space-y-4">
+                <h5 class="uppercase tracking-widest text-luxuryGold font-semibold">Capabilities Deck</h5>
+                <p class="text-luxuryMuted leading-relaxed">
+                    Request our complete, unredacted corporate capabilities brochure containing launch case summaries.
+                </p>
+                <a href="#contact"
+                    class="inline-block text-luxuryGold border-b border-luxuryGold pb-1 hover:text-luxuryLight hover:border-luxuryLight transition-all">Request
+                    PDF Document &rarr;</a>
+            </div>
+        </div>
+
+        <div
+            class="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-luxuryLight/5 flex flex-col sm:flex-row justify-between items-center text-[10px] text-luxuryMuted space-y-4 sm:space-y-0">
+            <span>&copy; 2026 LASO Solutions & Operations LLC. All rights reserved.</span>
+            <span>Strategic • Discreet • Connected</span>
+        </div>
+    </footer>
+
+    <!-- SCRIPT LOGIC -->
+    <script>
+        // Toggle mobile navigation menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+        document.getElementById('mobileMenuBtn').addEventListener('click', toggleMobileMenu);
+
+        // Interactive Accordion (Methodology section)
+        function toggleAccordion(id) {
+            // Close all first
+            for (let i = 1; i <= 3; i++) {
+                const content = document.getElementById(`acc-content-${i}`);
+                const icon = document.getElementById(`acc-icon-${i}`);
+                if (i === id) {
+                    content.classList.toggle('hidden');
+                    if (content.classList.contains('hidden')) {
+                        icon.className = "fa-solid fa-plus text-xs text-luxuryGold";
+                    } else {
+                        icon.className = "fa-solid fa-minus text-xs text-luxuryGold";
+                    }
+                } else {
+                    content.classList.add('hidden');
+                    icon.className = "fa-solid fa-plus text-xs text-luxuryGold";
+                }
+            }
+        }
+
+        // Handle B2B Inquiry form submission elegantly (without standard browser alerts)
+        function handleInquirySubmit(event) {
+            event.preventDefault();
+            const form = document.getElementById('contactForm');
+            const successMsg = document.getElementById('successMessage');
+
+            // Apply visual fadeout to form and reveal success message
+            form.classList.add('hidden');
+            successMsg.classList.remove('hidden');
+        }
+
+        // On scroll events: change header background opacity & trigger animations
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('bg-luxuryDark/95', 'shadow-lg');
+                header.classList.remove('bg-transparent');
+            } else {
+                header.classList.remove('bg-luxuryDark/95', 'shadow-lg');
+                header.classList.add('bg-transparent');
+            }
+
+            // Trigger fade-in animations for elements with .reveal class
+            const reveals = document.querySelectorAll('.reveal');
+            for (let i = 0; i < reveals.length; i++) {
+                const windowHeight = window.innerHeight;
+                const elementTop = reveals[i].getBoundingClientRect().top;
+                const elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        });
+
+        // Trigger scroll event once on load to show elements already in view
+        window.dispatchEvent(new Event('scroll'));
+    </script>
+</body>
+
+</html>
